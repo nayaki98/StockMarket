@@ -1,0 +1,38 @@
+package com.example.stockspring.service;
+
+import java.sql.SQLException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import com.example.stockspring.dao.CompanyDao;
+import com.example.stockspring.dao.CompanyDaoImpl;
+import com.example.stockspring.model.Company;
+
+@Service
+public class CompanyServiceImpl implements CompanyService {
+
+	@Autowired
+	CompanyDao dao;
+	public void insertCompany(Company company) {
+		dao.insertCompany(company);
+		
+	}
+	
+	public List<Company> getCompanyList() throws SQLException {
+		return dao.getCompanyList();
+	}
+
+	public boolean updateCompamy(int companyCode,String ceo) throws SQLException{
+		boolean result = dao.updateCompamy(companyCode, ceo);
+		return result;
+	}
+
+	public boolean removeCompanyDetails(int companycode) throws SQLException {
+		boolean result =dao.removeCompanyDetails(companycode);
+		return result;
+	}
+
+}
